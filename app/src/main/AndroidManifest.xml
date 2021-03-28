@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.marketapp">
 
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -18,17 +18,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ScanProductCodeActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
-        <activity android:name=".ProductDetailActivity"
-            android:parentActivityName=".ScanProductCodeActivity">
-        </activity>
-        <activity android:name=".ShoppingCartActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
-
+        <activity
+            android:name=".ScanProductCodeActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ProductDetailActivity"
+            android:parentActivityName=".ScanProductCodeActivity" />
+        <activity
+            android:name=".ShoppingCartActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".VoucherActivity"
+            android:parentActivityName=".ScanProductCodeActivity" />
+        <activity
+            android:name=".PastTransactionsActivity"
+            android:parentActivityName=".PastTransactionsActivity" />
     </application>
-
 
 </manifest>

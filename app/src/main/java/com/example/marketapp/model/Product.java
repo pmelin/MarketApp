@@ -52,7 +52,6 @@ public class Product implements Serializable {
     }
 
     // equals and hashcode matches the "id" field
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

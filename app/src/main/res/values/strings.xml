@@ -8,5 +8,7 @@
     <string name="product_price_detail">Price: </string>
     <string name="product_quantity_detail">Quantity: </string>
     <string name="add_to_cart">Add To Cart</string>
+    <string name="voucher">Retrieve Voucher</string>
     <string name="checkout">Check-out</string>
+
 </resources>

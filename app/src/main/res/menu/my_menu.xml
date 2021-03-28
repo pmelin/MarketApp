@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <!-- This group uses the default category. -->
+  <group android:id="@+id/menuGroup_Main">
+    <item android:id="@+id/pastTransactions"
+        android:title="Past transactions" />
+    <item android:id="@+id/retrieveVouchers"
+        android:title="Retrieve vouchers" />
+  </group>
+</menu>

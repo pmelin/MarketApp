@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import com.example.marketapp.model.ShoppingCart;
 
 public class MainActivity extends AppCompatActivity {
     private boolean isCameraPermissionGranted = false;
+
 
     // android api to request camera permission
     private final ActivityResultLauncher<String> requestPermissionLauncher =
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showMainMenu() {
+
         setContentView(R.layout.main_screen);
 
         Button scanProductButton = (Button) findViewById(R.id.btnScanProduct);
@@ -85,5 +88,28 @@ public class MainActivity extends AppCompatActivity {
             requestCameraPermission();
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater = getMenuInflater(); //from activity
+        inflater.inflate(R.menu.my_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.retrieveVouchers:
+                startActivity(new Intent(this, VoucherActivity.class));
+                return true;
+            case R.id.pastTransactions:
+                startActivity(new Intent(this, PastTransactionsActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

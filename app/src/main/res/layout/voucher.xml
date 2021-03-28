@@ -5,8 +5,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
     <Button
-        android:id="@+id/btnCheckout"
-        android:text="@string/checkout"
+        android:id="@+id/btnRetrieveVoucher"
+        android:text="@string/voucher"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 
