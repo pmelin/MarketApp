@@ -10,5 +10,6 @@
     <string name="add_to_cart">Add To Cart</string>
     <string name="voucher">Retrieve Voucher</string>
     <string name="checkout">Check-out</string>
-
+    <string name="order">Order</string>
+    <string name="selectVoucher">Select a voucher to get a discount in this purchase:</string>
 </resources>

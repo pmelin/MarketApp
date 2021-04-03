@@ -19,6 +19,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".CheckoutActivity"
+            android:parentActivityName=".ShoppingCartActivity" />
+        <activity
             android:name=".ScanProductCodeActivity"
             android:parentActivityName=".MainActivity" />
         <activity

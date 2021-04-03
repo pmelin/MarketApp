@@ -1,8 +1,6 @@
 package com.example.marketapp.model;
 
-import java.util.Collections;
 import java.util.Objects;
-import java.util.Set;
 
 public class Voucher {
     private final Long id;
