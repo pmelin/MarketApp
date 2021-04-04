@@ -9,7 +9,8 @@
     <string name="product_quantity_detail">Quantity: </string>
     <string name="add_to_cart">Add To Cart</string>
     <string name="voucher">Retrieve Voucher</string>
-    <string name="checkout">Check-out</string>
     <string name="order">Order</string>
-    <string name="selectVoucher">Select a voucher to get a discount in this purchase:</string>
+    <string name="selectVoucher">Select a voucher to get a discount:</string>
+    <string name="remove_product">Remove</string>
+    <string name="shopping_cart_total">Total:</string>
 </resources>

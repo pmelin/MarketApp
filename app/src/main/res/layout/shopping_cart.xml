@@ -14,24 +14,51 @@
 
     </ListView>
 
-    <LinearLayout
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:stretchColumns="1">
+        <TableRow>
+            <TextView
+                android:padding="3dip"
+                android:text="@string/selectVoucher" />
 
-    </LinearLayout>
+            <Spinner
+                android:id="@+id/voucher_spinner"
+                android:gravity="center"
+                android:padding="3dip" />
+        </TableRow>
+    </TableLayout>
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+        <TableRow>
+            <TextView
+                android:text="@string/shopping_cart_total"
+                android:padding="3dip" />
+
+            <TextView
+                android:id="@+id/lblShoppingCartTotal"
+                android:gravity="center"
+                android:padding="3dip"
+                android:text="TOTAL HERE" />
+        </TableRow>
+    </TableLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/btnCheckout"
-            android:text="@string/checkout"
+            android:id="@+id/btnOrder"
+            android:text="@string/order"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
-
-
 </LinearLayout>
