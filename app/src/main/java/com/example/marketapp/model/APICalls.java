@@ -79,8 +79,8 @@ public class APICalls {
         for (int i = 0; i < arr.length(); i++)
         {
             //Long productID = arr.getJSONObject(i).getLong("voucher_id");
-            String name = arr.getJSONObject(i).getString("added_on");
-            Double value = arr.getJSONObject(i).getDouble("value");
+            String name = arr.getJSONObject(i).getString("title");
+            Double value = arr.getJSONObject(i).getDouble("price");
 
             productsList.add(new Product((Long.valueOf(i)), name, value));
         }

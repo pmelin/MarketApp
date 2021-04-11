@@ -34,7 +34,7 @@ public class PastTransactionsActivity extends ListActivity {
         getAllCars();
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -50,7 +50,6 @@ public class PastTransactionsActivity extends ListActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(PastTransactionsActivity.this, CartItemsActivity.class);
-                Transaction x = listAllCarts.get(position);
                 intent.putExtra("CART_ID" , listAllCarts.get(position).getCarID());
                 startActivity(intent);
             }

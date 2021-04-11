@@ -29,8 +29,8 @@ public class Transaction {
         return voucherValue;
     }
 
-    public Long getCarID() {
-        return carID;
+    public String getCarID() {
+        return carID.toString();
     }
 
     @Override
