@@ -3,6 +3,7 @@
     package="com.example.marketapp">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -33,6 +34,9 @@
             android:parentActivityName=".ScanProductCodeActivity" />
         <activity
             android:name=".PastTransactionsActivity"
+            android:parentActivityName=".PastTransactionsActivity" />
+        <activity
+            android:name=".CartItemsActivity"
             android:parentActivityName=".PastTransactionsActivity" />
     </application>
 
