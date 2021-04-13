@@ -9,16 +9,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.example.marketapp.model.ShoppingCart;
-
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
     private boolean isCameraPermissionGranted = false;
 
 
@@ -54,12 +51,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void showMainMenu() {
 
-        setContentView(R.layout.main_screen);
+        setContentView(R.layout.home_screen);
 
         Button scanProductButton = (Button) findViewById(R.id.btnScanProduct);
         scanProductButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent scanProductCodeActivity = new Intent(MainActivity.this, ScanProductCodeActivity.class);
+                Intent scanProductCodeActivity = new Intent(HomeActivity.this, ScanProductCodeActivity.class);
                 startActivity(scanProductCodeActivity);
             }
         });
@@ -67,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         Button checkoutButton = (Button) findViewById(R.id.btnShoppingCart);
         checkoutButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent shoppingCartActivity = new Intent(MainActivity.this, ShoppingCartActivity.class);
+                Intent shoppingCartActivity = new Intent(HomeActivity.this, ShoppingCartActivity.class);
                 startActivity(shoppingCartActivity);
             }
         });

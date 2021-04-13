@@ -41,7 +41,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                     Toast.makeText(ProductDetailActivity.this, product.getName() + " added to the shopping cart!", Toast.LENGTH_SHORT).show();
 
                     // goes back to the main menu
-                    Intent i= new Intent(ProductDetailActivity.this, MainActivity.class);
+                    Intent i= new Intent(ProductDetailActivity.this, HomeActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
                 } catch(Exception e) {
