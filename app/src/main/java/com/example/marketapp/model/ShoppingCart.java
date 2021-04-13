@@ -18,8 +18,8 @@ public class ShoppingCart {
 
     private final static Set<Voucher> vouchers = new HashSet<>(
             Arrays.asList(
-                    new Voucher((long) 1, "Voucher 1"),
-                    new Voucher((long) 2, "Voucher 2")));
+                    new Voucher((long) 1, "Voucher 1", 10),
+                    new Voucher((long) 2, "Voucher 2",10)));
 
     /**
      * Adds / replaces a product on the shopping cart.

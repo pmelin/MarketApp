@@ -5,26 +5,32 @@ import java.util.Objects;
 
 public class Transaction {
 
-    private final Long id;
+    private final String voucherValue;
+    private final Long carID;
     private final double total;
-    private final Date date;
+    private final String date;
 
-    public Transaction(Long id, double total, Date date) {
-        this.id = id;
-        this.total = total;
+    public Transaction(String voucher, long carID, long total, String date) {
+        this.voucherValue = voucher;
         this.date = date;
+        this.carID = carID;
+        this.total = total;
     }
 
     public double getTotal() {
         return total;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public Long getId() {
-        return id;
+    public String getClientID() {
+        return voucherValue;
+    }
+
+    public String getCarID() {
+        return carID.toString();
     }
 
     @Override
@@ -32,11 +38,16 @@ public class Transaction {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transaction transaction = (Transaction) o;
-        return Objects.equals(id, transaction.id);
+        return Objects.equals(voucherValue, transaction.voucherValue);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(voucherValue);
+    }
+
+    public String toString()
+    {
+        return "You bought a total value of " + total + " on the date of " + date;
     }
 }

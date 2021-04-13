@@ -65,4 +65,9 @@ public class Product implements Serializable {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public String toString()
+    {
+        return "Bought " + name + " that costed " + price;
+    }
 }

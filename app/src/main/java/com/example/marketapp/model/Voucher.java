@@ -3,12 +3,14 @@ package com.example.marketapp.model;
 import java.util.Objects;
 
 public class Voucher {
-    private final Long id;
-    private final String name;
+    private Long id;
+    private String name;
+    private int discount;
 
-    public Voucher(Long id, String name) {
+    public Voucher(Long id, String name, int discount) {
         this.id = id;
         this.name = name;
+        this.discount = discount;
     }
 
     public Long getId() {
@@ -30,6 +32,11 @@ public class Voucher {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public String toString()
+    {
+        return "Voucher id:" + id + ", discount given:" + discount;
     }
 
 }
