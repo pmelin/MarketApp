@@ -13,7 +13,7 @@ import java.util.List;
 public class VoucherActivity extends ListActivity {
 
     private static String UserID = "1";
-    private static List vouchers;
+
     private APICalls apiCalls;
 
     @Override
@@ -24,33 +24,28 @@ public class VoucherActivity extends ListActivity {
         getAvailableVouchers();
     }
 
-    public static void setVoucherList(ArrayList<Voucher> listVouchers) {
-        vouchers = listVouchers;
-    }
 
     //api call to get available vouchers
     public void getAvailableVouchers() {
 
-         getAllVouchers();
-
         try {
-            Thread.sleep(1000);
+            getAllVouchers();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         ArrayAdapter adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
-                vouchers);
+                apiCalls.voucherListAPI);
 
         setListAdapter(adapter);
     };
 
-    public void getAllVouchers()
-    {
+    public void getAllVouchers() throws InterruptedException {
         APICalls.GetVouchers getVouchers = apiCalls.new GetVouchers(UserID);
         Thread thr = new Thread(getVouchers);
         thr.start();
+        thr.join();
     }
 
 }

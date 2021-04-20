@@ -12,22 +12,41 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.marketapp.model.APICalls;
 import com.example.marketapp.model.ShoppingCart;
 import com.example.marketapp.model.Voucher;
 
+import org.json.*;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class ShoppingCartActivity extends ListActivity implements AdapterView.OnItemSelectedListener  {
+
+    private TextView lblTotal;
+    private Voucher voucherSelected = null;
+
+    private APICalls apiCalls;
+    private static String UserID = "1";
+
     private void calculateValues() {
-        TextView lblTotal = (TextView) findViewById(R.id.lblShoppingCartTotal);
-        lblTotal.setText(String.valueOf(ShoppingCart.getTotal() + "€"));
+        int voucherDiscount = voucherSelected == null ? 0 : voucherSelected.getDiscount();
+        lblTotal.setText(String.valueOf(ShoppingCart.getTotal(voucherDiscount) + "€"));
     }
 
     @Override
-    public void onCreate(Bundle icicle) {
+    public void onCreate(Bundle icicle)
+    {
         super.onCreate(icicle);
         setContentView(R.layout.shopping_cart);
+        lblTotal = (TextView) findViewById(R.id.lblShoppingCartTotal);
+        apiCalls = new APICalls();
+
+        try {
+            getAllVouchers();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
         ProductListAdapter adapter = new ProductListAdapter(this,
                 new ArrayList<>(ShoppingCart.getProducts()));
@@ -43,23 +62,37 @@ public class ShoppingCartActivity extends ListActivity implements AdapterView.On
 
         Spinner spinner = findViewById(R.id.voucher_spinner);
         spinner.setOnItemSelectedListener(this);
-        List<String> listVouchersNames = new ArrayList<>();
-
-        for (Voucher vouchers : ShoppingCart.getVouchers()) {
-            listVouchersNames.add(vouchers.getName());
-        }
-
-        ArrayAdapter spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listVouchersNames);
-
+        ArrayAdapter spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, apiCalls.voucherListAPI);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         spinner.setAdapter(spinnerAdapter);
+
+        voucherSelected = (Voucher) spinner.getSelectedItem();
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                voucherSelected = (Voucher) spinner.getSelectedItem();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                voucherSelected = null;
+            }
+        });
 
         Button orderButton = (Button) findViewById(R.id.btnOrder);
         orderButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (ShoppingCart.isEmpty()) {
                     Toast.makeText(ShoppingCartActivity.this, "The shopping cart is empty!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(ShoppingCartActivity.this, QRCodeCartActivity.class);
+                    try {
+                        intent.putExtra("JSON_TO_CONVERT" , GetInformationReadyToQrCode());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    startActivity(intent);
                 }
             }
         });
@@ -67,10 +100,30 @@ public class ShoppingCartActivity extends ListActivity implements AdapterView.On
         calculateValues();
     }
 
+    private String GetInformationReadyToQrCode() throws JSONException
+    {
+        JSONObject jo = new JSONObject();
+        // user id
+        jo.put("user_id", UserID);
+        // voucher if possible
+        if (voucherSelected != null) {
+            jo.put("voucher_id", voucherSelected.getId());
+        }
+        // total value of the cart
+        jo.put("total", lblTotal.getText());
+        // json array with the id's of the products
+        JSONArray jsonA = new JSONArray();
+        ShoppingCart.getProducts().forEach( product -> jsonA.put(product.getId()));
+
+        jo.put("product_id" , jsonA);
+
+        System.out.println(jo.toString());
+        return jo.toString();
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String item = parent.getItemAtPosition(position).toString();
-
         // Showing selected spinner item
         Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
 
@@ -79,5 +132,12 @@ public class ShoppingCartActivity extends ListActivity implements AdapterView.On
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         // TODO Auto-generated method stub
+    }
+
+    public void getAllVouchers() throws InterruptedException {
+        APICalls.GetVouchers getVouchers = apiCalls.new GetVouchers(UserID);
+        Thread thr = new Thread(getVouchers);
+        thr.start();
+        thr.join();
     }
 }

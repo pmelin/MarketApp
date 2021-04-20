@@ -17,6 +17,10 @@ public class Voucher {
         return id;
     }
 
+    public int getDiscount() {
+        return discount;
+    }
+
     public String getName() {
         return name;
     }
