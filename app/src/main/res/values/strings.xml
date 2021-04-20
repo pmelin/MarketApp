@@ -13,4 +13,5 @@
     <string name="selectVoucher">Select a voucher to get a discount:</string>
     <string name="remove_product">Remove</string>
     <string name="shopping_cart_total">Total:</string>
+    <string name="bt_finishActivity">Finish Activity After using QR Code</string>
 </resources>

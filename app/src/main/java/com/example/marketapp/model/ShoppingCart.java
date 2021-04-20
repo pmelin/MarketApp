@@ -1,5 +1,6 @@
 package com.example.marketapp.model;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -16,23 +17,16 @@ public class ShoppingCart {
                     new Product((long) 2, "Limão", 4.5),
                     new Product((long) 3, "Morango", 6.5)));
 
-    private final static Set<Voucher> vouchers = new HashSet<>(
+    /*private final static Set<Voucher> vouchers = new HashSet<>(
             Arrays.asList(
                     new Voucher((long) 1, "Voucher 1", 10),
-                    new Voucher((long) 2, "Voucher 2",10)));
+                    new Voucher((long) 2, "Voucher 2",10)));*/
 
     /**
      * Adds / replaces a product on the shopping cart.
      */
     public static void addProduct(Product product) {
         products.add(product);
-    }
-
-    /**
-     * Adds / replaces a voucher on the shopping cart.
-     */
-    public static void addVoucher(Voucher voucher) {
-        vouchers.add(voucher);
     }
 
     /**
@@ -43,14 +37,6 @@ public class ShoppingCart {
     }
 
     /**
-     * Removes a product from the shopping cart.
-     */
-    public static void removeVoucher(Voucher voucher) {
-        vouchers.remove(voucher);
-    }
-
-
-    /**
      * Retrieves the list of products on the shopping cart.
      */
     public static Set<Product> getProducts() {
@@ -58,20 +44,21 @@ public class ShoppingCart {
     }
 
     /**
-     * Retrieves the list of products on the shopping cart.
-     */
-    public static Set<Voucher> getVouchers() {
-        return Collections.unmodifiableSet(vouchers);
-    }
-
-    /**
      * Returns the total amount of the shopping cart.
      */
-    public static Double getTotal() {
+    public static Double getTotal(int voucherDiscount) {
         // sums the price of all products
         double sum = products.stream().mapToDouble(Product::getPrice).reduce(0, Double::sum);
         // rounds the sum to 2 decimals
-        return Math.round(sum * 100.0) / 100.0;
+        if (voucherDiscount != 0)
+        {
+            float discount = (100-voucherDiscount)/100f;
+            DecimalFormat decimalFormat = new DecimalFormat("#.##");
+            return Double.valueOf(decimalFormat.format((Math.round(sum * 100.0) / 100.0 * discount)));
+        } else {
+            return (Math.round(sum * 100.0) / 100.0);
+        }
+
     }
 
     /**

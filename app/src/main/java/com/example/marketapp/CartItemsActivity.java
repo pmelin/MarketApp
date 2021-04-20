@@ -33,10 +33,8 @@ public class CartItemsActivity extends ListActivity {
     //api call to get past transactions
     public void getPastTransactions()
     {
-        getProducts();
-
         try {
-            Thread.sleep(1500);
+            getProducts();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -54,10 +52,10 @@ public class CartItemsActivity extends ListActivity {
     }
 
 
-    public void getProducts()
-    {
+    public void getProducts() throws InterruptedException {
         APICalls.GetProducts getProducts = apiCalls.new GetProducts(cartID);
         Thread thr = new Thread(getProducts);
         thr.start();
+        thr.join();
     }
 }

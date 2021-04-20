@@ -31,10 +31,8 @@ public class PastTransactionsActivity extends ListActivity {
     //api call to get past transactions
     public void getPastTransactions()
     {
-        getAllCars();
-
         try {
-            Thread.sleep(1500);
+            getAllCars();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -63,10 +61,10 @@ public class PastTransactionsActivity extends ListActivity {
     }
 
 
-    public void getAllCars()
-    {
+    public void getAllCars() throws InterruptedException {
         APICalls.GetAllCarts getAllCarts = apiCalls.new GetAllCarts(UserID);
         Thread thr = new Thread(getAllCarts);
         thr.start();
+        thr.join();
     }
 }

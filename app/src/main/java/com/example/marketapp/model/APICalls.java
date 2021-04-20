@@ -13,10 +13,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.*;
 
 public class APICalls {
+
+    public List voucherListAPI;
 
     private void GetVouchersList(String jsonString) throws JSONException {
         ArrayList<Voucher> voucherList = new ArrayList<>();
@@ -38,7 +41,7 @@ public class APICalls {
             voucherList.add(new Voucher((long) voucherID, voucherCODE, discount));
         }
 
-        VoucherActivity.setVoucherList(voucherList);
+        voucherListAPI = voucherList;
     }
 
     private void GetAllCartsList(String jsonString) throws JSONException {

@@ -38,6 +38,9 @@
         <activity
             android:name=".CartItemsActivity"
             android:parentActivityName=".PastTransactionsActivity" />
+        <activity
+            android:name=".QRCodeCartActivity"
+            android:parentActivityName=".ShoppingCartActivity" />
     </application>
 
 </manifest>
