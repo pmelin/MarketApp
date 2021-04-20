@@ -1,17 +1,24 @@
 package com.example.marketapp;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.marketapp.model.ShoppingCart;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitMatrix;
+
+import org.json.JSONException;
 
 
 public class QRCodeCartActivity extends AppCompatActivity
@@ -26,7 +33,20 @@ public class QRCodeCartActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.qr_code_cart);
-        String jsonObjectString = getIntent().getStringExtra("JSON_TO_CONVERT");
+
+        Button orderButton = (Button) findViewById(R.id.bt_generate);
+
+        orderButton.setOnClickListener(new View.OnClickListener()
+        {
+           @Override
+           public void onClick(View v) {
+                ShoppingCart.removeAllProduct();
+                Intent intent = new Intent(QRCodeCartActivity.this , MainActivity.class);
+                startActivity(intent);
+           }
+        });
+
+                String jsonObjectString = getIntent().getStringExtra("JSON_TO_CONVERT");
         qrCodeIv = findViewById(R.id.img_qr_code);
         errorTv = findViewById(R.id.tv_error);
         Thread thr = new Thread(new convertToQR(jsonObjectString));

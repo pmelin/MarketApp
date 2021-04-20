@@ -36,6 +36,9 @@ public class ShoppingCart {
         products.remove(product);
     }
 
+    public static void removeAllProduct() { products.clear();
+    }
+
     /**
      * Retrieves the list of products on the shopping cart.
      */
