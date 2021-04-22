@@ -2,7 +2,7 @@ package com.example.marketapp.dto;
 
 public class RegisterResponseDTO {
     private String uuid;
-    private String marketPublicKey;
+    private String mktKey;
 
     public RegisterResponseDTO() {
 
@@ -16,11 +16,11 @@ public class RegisterResponseDTO {
         this.uuid = uuid;
     }
 
-    public String getMarketPublicKey() {
-        return marketPublicKey;
+    public String getMktKey() {
+        return mktKey;
     }
 
-    public void setMarketPublicKey(String marketPublicKey) {
-        this.marketPublicKey = marketPublicKey;
+    public void setMktKey(String mktKey) {
+        this.mktKey = mktKey;
     }
 }

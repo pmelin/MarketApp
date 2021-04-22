@@ -2,45 +2,24 @@ package com.example.marketapp.model;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * class that represents a product.
  */
 public class Product implements Serializable {
-    private final Long id;
+    private final UUID id;
     private final String name;
     private final Double price;
 
 
-    public Product(Long id, String name, Double price) {
+    public Product(UUID id, String name, Double price) {
         this.id = id;
         this.name = name;
         this.price = price;
     }
 
-    /**
-     * Builds a product instance from a QR code value.
-     */
-    public static Product fromQrCode(String value) {
-        System.out.println("QR code value: " + value);
-        if (value == null || value.trim().length() == 0) {
-            throw new RuntimeException("Invalid QR Code value.");
-        }
-
-        String[] parts = value.trim().split(";");
-
-        if (parts.length != 4) {
-            throw new RuntimeException("Invalid QR Code value.");
-        }
-
-        return new Product(
-                Long.parseLong(parts[0]),
-                parts[1].trim(),
-                Double.parseDouble(parts[2])
-                );
-    }
-
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 

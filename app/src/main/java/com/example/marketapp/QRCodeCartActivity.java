@@ -41,7 +41,7 @@ public class QRCodeCartActivity extends AppCompatActivity
            @Override
            public void onClick(View v) {
                 ShoppingCart.removeAllProduct();
-                Intent intent = new Intent(QRCodeCartActivity.this , MainActivity.class);
+                Intent intent = new Intent(QRCodeCartActivity.this , HomeActivity.class);
                 startActivity(intent);
            }
         });

@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.marketapp.dto.RegisterRequestDTO;
@@ -88,7 +87,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     try {
                         RegisterResponseDTO response = BackendService.register(request);
                         //save the user data on the App's Preferences
-                        SettingsRepository.saveRegistration(response.getUuid(), nickName, password, response.getMarketPublicKey(), RegistrationActivity.this);
+                        SettingsRepository.saveRegistration(response.getUuid(), nickName, password, response.getMktKey(), RegistrationActivity.this);
 
                         Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                         startActivity(intent);

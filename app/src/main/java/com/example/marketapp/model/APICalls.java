@@ -14,6 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.json.*;
 
@@ -85,7 +86,7 @@ public class APICalls {
             String name = arr.getJSONObject(i).getString("title");
             Double value = arr.getJSONObject(i).getDouble("price");
 
-            productsList.add(new Product((Long.valueOf(i)), name, value));
+            productsList.add(new Product(UUID.randomUUID(), name, value));
         }
 
         CartItemsActivity.setListOfProducts(productsList);
