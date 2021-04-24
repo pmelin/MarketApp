@@ -49,18 +49,9 @@ public class SettingsRepository {
     /**
      * Retrieves the market's public key from preferences.
      */
-    public static String getmarketPublicKey(Context context) {
-        //String marketPublicKey = getFromPreferences("marketPublicKey", context);
-        String pubKeyStr = "-----BEGIN PUBLIC KEY-----\n" +
-                "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxFVM+d5p4n/P9kIhwyho\n" +
-                "JzPHJUMdO9cnRwLsOR+VxXYTRRzT2MG6WTULDcoELVFK60NbtTDkKX6VqgOfuqB2\n" +
-                "uSRnQ4yIFKcSe8s+IzbnULHYXUZJj1lp1svsfXx2p2gLmPCbmD3Yx1TysTvFKP15\n" +
-                "eAGpBlI0QKMK4ZLvHxFAxQs4JJ6e1i1pKhaqGvyIlKcYafYmoWA6nYDQnECAiQqk\n" +
-                "exjOW0fUouXfBBMtT9BtXrw/Onu4KhUN45tXqdFfNVLOtfNnhsSaPlpgx2aaBK5x\n" +
-                "LQHDGz2SBYvZBGmJa9Fx53xRGpH5bfWVNmbKZq1diupFMaXs68mG2KEckNIjCv8+\n" +
-                "KwIDAQAB\n" +
-                "-----END PUBLIC KEY-----";
-        return pubKeyStr;
+    public static String getMarketPublicKey(Context context) {
+        String marketPublicKey = getFromPreferences("marketPublicKey", context);
+        return marketPublicKey;
     }
 
 }

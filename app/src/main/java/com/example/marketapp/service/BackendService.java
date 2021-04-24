@@ -11,10 +11,33 @@ import java.io.OutputStream;
 import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class BackendService {
 
-    public static final String BACKEND_HOST = "http://10.0.2.2:3000";
+    public static final String BACKEND_HOST = "https://mesw-market-api.herokuapp.com";
+
+    private static HttpURLConnection sendPostRequest(URL url, String jsonRequest) throws Exception{
+       // System.out.println("URL: " + url.toString());
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/json");
+        con.setDoOutput(true);
+
+        try (OutputStream os = con.getOutputStream()) {
+            //writes the json string into the request body
+            byte[] input = jsonRequest.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+        return con;
+    }
+
+    private static boolean isRedirect(int status) {
+        return (status == HttpURLConnection.HTTP_MOVED_TEMP
+                || status == 308
+                || status == HttpURLConnection.HTTP_MOVED_PERM
+                || status == HttpURLConnection.HTTP_SEE_OTHER);
+    }
 
     //returns a string of the json response
     private static final String postJson(Serializable request, String path) throws Exception{
@@ -25,20 +48,26 @@ public class BackendService {
         try {
             //transforms the request DTO into a json string
             String jsonRequest = new Gson().toJson(request);
+            con = sendPostRequest(url, jsonRequest);
 
-            con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("POST");
-            con.setRequestProperty("Content-Type", "application/json");
-            con.setDoOutput(true);
+            while(isRedirect(con.getResponseCode())) {
+                String redirectUrl = con.getHeaderField("Location");
 
-            try (OutputStream os = con.getOutputStream()) {
-                //writes the json string into the request body
-                byte[] input = jsonRequest.getBytes("utf-8");
-                os.write(input, 0, input.length);
+                try {
+                    // closes the previous request
+                    con.disconnect();
+                } catch(Exception ignored){}
+
+                // sends the request to the redirected URL
+                con = sendPostRequest(new URL(redirectUrl), jsonRequest);
+            }
+
+            if (con.getResponseCode() != 200) {
+                throw new Exception("Received HTTP response code: " + con.getResponseCode());
             }
             //reads the json response
             try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(con.getInputStream(), "utf-8"))) {
+                    new InputStreamReader(con.getInputStream(), StandardCharsets.UTF_8))) {
                 StringBuilder response = new StringBuilder();
                 String responseLine = null;
                 while ((responseLine = br.readLine()) != null) {
@@ -55,7 +84,7 @@ public class BackendService {
     }
 
     public static RegisterResponseDTO register(RegisterRequestDTO request) throws Exception {
-        String jsonResponse = postJson(request, "/users");
+        String jsonResponse = postJson(request, "/user/");
         //transforms the response json string into the responseDTO
         return new Gson().fromJson(jsonResponse, RegisterResponseDTO.class);
     }

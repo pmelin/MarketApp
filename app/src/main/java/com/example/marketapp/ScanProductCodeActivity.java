@@ -96,7 +96,7 @@ public class ScanProductCodeActivity extends AppCompatActivity {
     }
 
     private PublicKey getPublicKey() throws Exception {
-        String pemString = SettingsRepository.getmarketPublicKey(ScanProductCodeActivity.this).replace("-----BEGIN PUBLIC KEY-----\n", "");
+        String pemString = SettingsRepository.getMarketPublicKey(ScanProductCodeActivity.this).replace("-----BEGIN PUBLIC KEY-----\n", "");
         pemString = pemString.replace("-----END PUBLIC KEY-----", "");
         byte[] publicBytes = Base64.decode(pemString, Base64.DEFAULT);
         X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicBytes);
