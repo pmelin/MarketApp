@@ -6,19 +6,22 @@ import android.widget.ArrayAdapter;
 
 import com.example.marketapp.model.Voucher;
 import com.example.marketapp.model.APICalls;
+import com.example.marketapp.repository.SettingsRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class VoucherActivity extends ListActivity {
 
-    private static String UserID = "1";
+    private static String UserID;
 
     private APICalls apiCalls;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        UserID = SettingsRepository.getUserUUID(VoucherActivity.this);
         apiCalls = new APICalls();
         setContentView(R.layout.voucher);
         getAvailableVouchers();

@@ -54,4 +54,9 @@ public class SettingsRepository {
         return marketPublicKey;
     }
 
+    public static String getUserUUID(Context context) {
+        String userUUIDKEY = getFromPreferences("uuid", context);
+        return userUUIDKEY;
+    }
+
 }

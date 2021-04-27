@@ -4,6 +4,7 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,10 +16,25 @@ import android.widget.Toast;
 import com.example.marketapp.model.APICalls;
 import com.example.marketapp.model.ShoppingCart;
 import com.example.marketapp.model.Voucher;
+import com.example.marketapp.repository.SettingsRepository;
 
 import org.json.*;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.InvalidKeyException;
+import java.security.KeyStore;
+import java.security.KeyStore.Entry;
+import java.security.KeyStoreException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.Signature;
+import java.security.SignatureException;
+import java.security.UnrecoverableEntryException;
+import java.security.cert.CertificateException;
 import java.util.ArrayList;
+
+import javax.crypto.Cipher;
 
 public class ShoppingCartActivity extends ListActivity implements AdapterView.OnItemSelectedListener  {
 
@@ -26,7 +42,7 @@ public class ShoppingCartActivity extends ListActivity implements AdapterView.On
     private Voucher voucherSelected = null;
 
     private APICalls apiCalls;
-    private static String UserID = "1";
+    private String UserID;
 
     private void calculateValues() {
         int voucherDiscount = voucherSelected == null ? 0 : voucherSelected.getDiscount();
@@ -40,13 +56,13 @@ public class ShoppingCartActivity extends ListActivity implements AdapterView.On
         setContentView(R.layout.shopping_cart);
         lblTotal = (TextView) findViewById(R.id.lblShoppingCartTotal);
         apiCalls = new APICalls();
+        UserID = SettingsRepository.getUserUUID(ShoppingCartActivity.this);
 
         try {
             getAllVouchers();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
 
         ProductListAdapter adapter = new ProductListAdapter(this,
                 new ArrayList<>(ShoppingCart.getProducts()));
@@ -102,23 +118,21 @@ public class ShoppingCartActivity extends ListActivity implements AdapterView.On
 
     private String GetInformationReadyToQrCode() throws JSONException
     {
-        JSONObject jo = new JSONObject();
+        JSONObject jsonObj = new JSONObject();
         // user id
-        jo.put("user_id", UserID);
+        jsonObj.put("user_id", UserID);
         // voucher if possible
         if (voucherSelected != null) {
-            jo.put("voucher_id", voucherSelected.getId());
+            jsonObj.put("voucher_id", voucherSelected.getId());
         }
         // total value of the cart
-        jo.put("total", lblTotal.getText());
+        jsonObj.put("total", lblTotal.getText());
         // json array with the id's of the products
         JSONArray jsonA = new JSONArray();
         ShoppingCart.getProducts().forEach( product -> jsonA.put(product.getId()));
 
-        jo.put("product_id" , jsonA);
-
-        System.out.println(jo.toString());
-        return jo.toString();
+        jsonObj.put("product_id" , jsonA);
+        return jsonObj.toString() + "hash:" + prepareHash(jsonObj.toString());
     }
 
     @Override
@@ -134,10 +148,87 @@ public class ShoppingCartActivity extends ListActivity implements AdapterView.On
         // TODO Auto-generated method stub
     }
 
-    public void getAllVouchers() throws InterruptedException {
+    private void getAllVouchers() throws InterruptedException {
         APICalls.GetVouchers getVouchers = apiCalls.new GetVouchers(UserID);
         Thread thr = new Thread(getVouchers);
         thr.start();
         thr.join();
+    }
+
+    private String prepareHash(String jsonObjectString)
+    {
+        String hashValue = getHashValue(jsonObjectString);
+
+        KeyStore ks = null;
+        try {
+            ks = KeyStore.getInstance("AndroidKeyStore");
+        } catch (KeyStoreException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            ks.load(null);
+        } catch (CertificateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        Entry entry = null;
+        try {
+            entry = ks.getEntry(Constants.keyname, null);
+        } catch (KeyStoreException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (UnrecoverableEntryException e) {
+            e.printStackTrace();
+        }
+        if (!(entry instanceof KeyStore.PrivateKeyEntry)) {
+            Log.w(null,"Not an instance of a PrivateKeyEntry");
+            return null;
+        }
+
+        byte[] tag = hashValue.getBytes();
+        byte[] finaltag = new byte[0];
+
+        try {
+            Cipher cipher = Cipher.getInstance(Constants.ENC_ALGO);
+            cipher.init(Cipher.ENCRYPT_MODE, ((KeyStore.PrivateKeyEntry) entry).getPrivateKey());
+            finaltag = cipher.doFinal(tag);
+        }
+        catch (Exception e) {
+        }
+
+        return new String(finaltag);
+    }
+
+    private String getHashValue(String value)
+    {
+        // Encode string into SHA-256
+        MessageDigest digest = null;
+        try {
+            digest = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        byte[] encodedhash = digest.digest(
+        value.getBytes(StandardCharsets.UTF_8));
+
+        // now transform the byte array into hexadecimal so we can convert back to string
+
+        StringBuilder hexString = new StringBuilder(2 * encodedhash.length);
+        for (int i = 0; i < encodedhash.length; i++) {
+            String hex = Integer.toHexString(0xff & encodedhash[i]);
+            if(hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+
+        return hexString.toString();
     }
 }

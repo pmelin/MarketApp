@@ -9,13 +9,14 @@ import android.widget.ArrayAdapter;
 
 import com.example.marketapp.model.APICalls;
 import com.example.marketapp.model.Transaction;
+import com.example.marketapp.repository.SettingsRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PastTransactionsActivity extends ListActivity {
 
-    private static String UserID = "1";
+    private static String UserID;
     private static  List<Transaction> listAllCarts;
     private APICalls apiCalls;
 
@@ -23,6 +24,7 @@ public class PastTransactionsActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        UserID = SettingsRepository.getUserUUID(PastTransactionsActivity.this);
         apiCalls = new APICalls();
         setContentView(R.layout.past_transactions);
         getPastTransactions();
