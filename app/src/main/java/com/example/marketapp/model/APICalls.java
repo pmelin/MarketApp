@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,7 +23,7 @@ public class APICalls {
 
     public List voucherListAPI;
 
-    private void GetVouchersList(String jsonString) throws JSONException {
+    private void GetVouchersList(String jsonString) throws Exception {
         ArrayList<Voucher> voucherList = new ArrayList<>();
         JSONObject obj = null;
         try {
@@ -31,21 +32,25 @@ public class APICalls {
             e.printStackTrace();
         }
 
-        JSONArray arr = obj.getJSONArray("data");
+        try {
+            JSONArray arr = obj.getJSONArray("data");
+            for (int i = 0; i < arr.length(); i++)
+            {
+                JSONObject jsonObject = arr.getJSONObject(i);
+                String voucherCODE = jsonObject.getString("code");
+                int discount = jsonObject.getInt("discount");
+                voucherList.add(new Voucher(voucherCODE, discount));
+            }
 
-        for (int i = 0; i < arr.length(); i++)
-        {
-            JSONObject jsonObject = arr.getJSONObject(i);
-            long voucherID = jsonObject.getLong("id");
-            String voucherCODE = jsonObject.getString("code");
-            int discount = jsonObject.getInt("discount");
-            voucherList.add(new Voucher((long) voucherID, voucherCODE, discount));
+            voucherListAPI = voucherList;
+
+        } catch (Exception e) {
+            voucherListAPI = Collections.emptyList();
         }
 
-        voucherListAPI = voucherList;
     }
 
-    private void GetAllCartsList(String jsonString) throws JSONException {
+    private void GetAllCartsList(String jsonString) throws Exception {
         ArrayList<Transaction> cartsList = new ArrayList<>();
         JSONObject obj = null;
         try {
@@ -54,16 +59,20 @@ public class APICalls {
             e.printStackTrace();
         }
 
-        JSONArray arr = obj.getJSONArray("data");
+        try {
+            JSONArray arr = obj.getJSONArray("data");
 
-        for (int i = 0; i < arr.length(); i++)
-        {
-            String voucherValue = arr.getJSONObject(i).getString("discount");
-            String date = arr.getJSONObject(i).getString("added_on");
-            long cartID = arr.getJSONObject(i).getLong("id");
-            long value = arr.getJSONObject(i).getLong("total");
+            for (int i = 0; i < arr.length(); i++)
+            {
+                String voucherValue = arr.getJSONObject(i).getString("discount");
+                String date = arr.getJSONObject(i).getString("added_on");
+                long cartID = arr.getJSONObject(i).getLong("id");
+                long value = arr.getJSONObject(i).getLong("total");
 
-            cartsList.add(new Transaction(voucherValue, cartID, value, date));
+                cartsList.add(new Transaction(voucherValue, cartID, value, date));
+            }
+        } catch (Exception e) {
+            cartsList.clear();
         }
 
         PastTransactionsActivity.setAllCarsList(cartsList);
@@ -82,7 +91,6 @@ public class APICalls {
 
         for (int i = 0; i < arr.length(); i++)
         {
-            //Long productID = arr.getJSONObject(i).getLong("voucher_id");
             String name = arr.getJSONObject(i).getString("title");
             Double value = arr.getJSONObject(i).getDouble("price");
 

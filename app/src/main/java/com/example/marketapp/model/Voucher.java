@@ -3,26 +3,20 @@ package com.example.marketapp.model;
 import java.util.Objects;
 
 public class Voucher {
-    private Long id;
-    private String name;
+    private String code;
     private int discount;
 
-    public Voucher(Long id, String name, int discount) {
-        this.id = id;
-        this.name = name;
+    public Voucher(String code, int discount) {
+        this.code = code;
         this.discount = discount;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public int getDiscount() {
         return discount;
     }
 
-    public String getName() {
-        return name;
+    public String getCode() {
+        return code;
     }
 
     @Override
@@ -30,17 +24,17 @@ public class Voucher {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Voucher voucher = (Voucher) o;
-        return Objects.equals(id, voucher.id);
+        return Objects.equals(code, voucher.code);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(code);
     }
 
     public String toString()
     {
-        return "Voucher id:" + id + ", discount given:" + discount;
+        return "Voucher code:" + code + ", discount given:" + discount;
     }
 
 }

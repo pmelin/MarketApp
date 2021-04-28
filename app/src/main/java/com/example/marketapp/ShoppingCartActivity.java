@@ -123,7 +123,7 @@ public class ShoppingCartActivity extends ListActivity implements AdapterView.On
         jsonObj.put("user_id", UserID);
         // voucher if possible
         if (voucherSelected != null) {
-            jsonObj.put("voucher_id", voucherSelected.getId());
+            jsonObj.put("voucher_code", voucherSelected.getCode());
         }
         // total value of the cart
         jsonObj.put("total", lblTotal.getText());
