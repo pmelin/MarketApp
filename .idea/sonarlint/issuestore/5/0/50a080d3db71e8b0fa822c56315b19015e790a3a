@@ -1,0 +1,28 @@
+
+Œ
+java:S13194"vThe type of the "allProducts" object should be an interface such as "List" rather than the implementation "ArrayList".(ùúñ
+E
+java:S3740"/Provide the parametrized type for this generic.(ç˜ü”
+E
+java:S3740,"/Provide the parametrized type for this generic.(®»ğ
+Q	java:S110"<This class has 6 parents which is greater than 5 authorized.(Å³‚È
+I
+java:S1128".Remove this unused import 'android.view.View'.(Ø½­äşÿÿÿÿ
+H
+java:S1128"3Remove this unused import 'android.content.Intent'.(³ğ‹G
+M
+java:S1128"7Remove this unused import 'android.widget.AdapterView'.(¶¾éæ
+Z
+java:S1128"DRemove this unused import 'com.example.marketapp.model.Transaction'.(­Á‚Ö
+o
+java:S3008"YRename this field "ListOfProducts" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ç˜ü”
+J
+java:S1874"4Remove this use of "ListActivity"; it is deprecated.(Å³‚È
+L
+java:S2696"6Make the enclosing method "static" or remove this set.(ÆãäÆ
+\
+java:S2142("FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
+Q
+java:S18740"6Remove this use of "setListAdapter"; it is deprecated.(£ö˜ªøÿÿÿÿ
+7
+java:S11162"Remove this empty statement.(ôŸìúÿÿÿÿ
