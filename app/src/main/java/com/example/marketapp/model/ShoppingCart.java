@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 
 /**
@@ -13,9 +14,9 @@ import java.util.Set;
 public class ShoppingCart {
     private final static Set<Product> products = new HashSet<>(
             Arrays.asList(
-                    new Product((long) 1, "Maça", 3.5),
-                    new Product((long) 2, "Limão", 4.5),
-                    new Product((long) 3, "Morango", 6.5)));
+                    new Product(UUID.randomUUID(), "Maça", 3.5),
+                    new Product(UUID.randomUUID(), "Limão", 4.5),
+                    new Product(UUID.randomUUID(), "Morango", 6.5)));
 
     /*private final static Set<Voucher> vouchers = new HashSet<>(
             Arrays.asList(
