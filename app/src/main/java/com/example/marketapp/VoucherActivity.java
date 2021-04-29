@@ -3,6 +3,9 @@ package com.example.marketapp;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.marketapp.model.Voucher;
 import com.example.marketapp.model.APICalls;
@@ -37,11 +40,21 @@ public class VoucherActivity extends ListActivity {
             e.printStackTrace();
         }
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                apiCalls.voucherListAPI);
+        if (apiCalls.voucherListAPI.size() == 0)
+        {
+            LinearLayout lin = (LinearLayout) findViewById(R.id.linearLayout2);
+            EditText et = new EditText(this);
+            et.setText("The list is empty , you don't have vouchers yet");
+            et.setMinLines(1);
+            et.setMaxLines(3);
+            lin.addView(et);
+        } else {
+            ArrayAdapter adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1,
+                    apiCalls.voucherListAPI);
 
-        setListAdapter(adapter);
+            setListAdapter(adapter);
+        }
     };
 
     public void getAllVouchers() throws InterruptedException {

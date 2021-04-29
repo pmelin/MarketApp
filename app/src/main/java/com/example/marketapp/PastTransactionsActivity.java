@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.example.marketapp.model.APICalls;
 import com.example.marketapp.model.Transaction;
@@ -31,19 +33,28 @@ public class PastTransactionsActivity extends ListActivity {
     }
 
     //api call to get past transactions
-    public void getPastTransactions()
-    {
+    public void getPastTransactions() {
         try {
             getAllCars();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        ArrayAdapter adapter = new ArrayAdapter<Transaction>(this,
-                android.R.layout.simple_list_item_1,
-                listAllCarts);
-
-        setListAdapter(adapter);
+        if (listAllCarts.size() == 0)
+        {
+            LinearLayout lin = (LinearLayout) findViewById(R.id.linearLayout2);
+            EditText et = new EditText(this);
+            et.setText("The list is empty , you don't have past carts yet");
+            et.setMinLines(1);
+            et.setMaxLines(3);
+            lin.addView(et);
+        }
+        else {
+            ArrayAdapter adapter = new ArrayAdapter<Transaction>(this,
+                    android.R.layout.simple_list_item_1,
+                    listAllCarts);
+            setListAdapter(adapter);
+        }
 
         // Create logic to deal with clicking in a cart and opening new activity with cart products
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
