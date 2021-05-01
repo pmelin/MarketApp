@@ -6,5 +6,6 @@ public class Constants {
     static final String KEY_ALGO = "RSA";
     static final String SIGN_ALGO = "SHA256WithRSA";
     static String keyname = "myIdKey";
-    static final String ENC_ALGO = "RSA/NONE/PKCS1Padding";
+    static final String ENC_ALGO = "RSA/NONE/NoPadding";
+    static final String keyname_real= "marketAppKey";
 }
