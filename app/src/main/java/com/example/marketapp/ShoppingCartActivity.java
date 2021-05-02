@@ -211,116 +211,10 @@ public class ShoppingCartActivity extends ListActivity implements AdapterView.On
         catch (Exception e) {
         }
 
-        //////////////////////////////////////////////////////////////////////////////////////////////
-        // SO PARA TESTES A PARTIR DAQUI ////////////////
-        ///////////////////////////////////////////////////////////////////////////////////////////////
-        tag = new String("Ola teste").getBytes(StandardCharsets.UTF_8);
-        String pubKeyString = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw3aneWngzELb6cx2F5Gu pyKBLTq2PEa3qvI4zfoCLJaa4TR2GcXI1db0l7SErWKw1LWsv5NJxqHu2pA1CuL8 MxcedTRhZt2ysKY3gcesj9x7QEUBKPGK9WtyzdztT5Rn2U0yEg+CLXYrHTeTul/N eHOKj+rs6TzRLc3UbyMXgaiQiLwmRyOE7V9uxaaxAxbiWtEqJwA8X9hQ5ACUo0dK qwWqBDCfIhhWCyyICMXuj6mZPqCD0Ms4lG8p1nHxuota95l6aNczos37Hmfl+sW1 l7Srda37Sf/OdZaHAywG6TuhXJsBcU5Xzz3iwuj7+RuwEyvShCXuc9zlDbVzSyqx jQIDAQAB";
-        PublicKey publicKey = null;
-
-
-        byte[] tagEncriptada = null;
-        try {
-            Cipher cipher = Cipher.getInstance(Constants.ENC_ALGO);
-            cipher.init(Cipher.ENCRYPT_MODE, ((KeyStore.PrivateKeyEntry) entry).getPrivateKey());
-            tagEncriptada = cipher.doFinal(tag);
-        }
-        catch (Exception e) {
-        }
-
-        byte[] tagDecrypted = null;
-        try {
-            tagDecrypted = decryptByPublicKey(tagEncriptada, pubKeyString);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        if(tagDecrypted == tag)
-        {
-            System.out.println("MILAGRE");
-        }
-
-        /*try {
-            publicKey = getPublicKey(pubKeyString);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        byte[] tagEncriptada = null;
-        try {
-            Cipher cipher = Cipher.getInstance(Constants.ENC_ALGO);
-            cipher.init(Cipher.ENCRYPT_MODE, ((KeyStore.PrivateKeyEntry) entry).getPrivateKey());
-            tagEncriptada = cipher.doFinal(tag);
-        }
-        catch (Exception e) {
-        }
-
-        byte[] tagDecriptada = null;
-
-        try {
-            Cipher cipher = Cipher.getInstance(Constants.ENC_ALGO);
-            cipher.init(Cipher.DECRYPT_MODE, publicKey);
-            tagDecriptada = cipher.doFinal(tagEncriptada);
-        }
-        catch (Exception e) {
-            System.out.println(e.toString());
-            return null;
-        }
-
-        String finalString = new String(tagDecriptada, StandardCharsets.ISO_8859_1);*/
-
          String encryptedhash = new String(finaltag);
 
         return  encryptedhash;
     }
-
-    public static byte[] encryptByPrivateKey(byte[] data, String key)
-            throws Exception {
-
-        byte[] keyBytes = decryptBASE64(key);
-
-
-        PKCS8EncodedKeySpec pkcs8KeySpec = new PKCS8EncodedKeySpec(keyBytes);
-        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-        Key privateKey = keyFactory.generatePrivate(pkcs8KeySpec);
-
-
-        Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());
-        cipher.init(Cipher.ENCRYPT_MODE, privateKey);
-
-        return cipher.doFinal(data);
-    }
-
-    public static byte[] decryptByPublicKey(byte[] data, String key)
-            throws Exception {
-
-        byte[] keyBytes = decryptBASE64(key);
-
-
-        X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(keyBytes);
-        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-        Key publicKey = keyFactory.generatePublic(x509KeySpec);
-
-
-        Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());
-        cipher.init(Cipher.DECRYPT_MODE, publicKey);
-
-        return cipher.doFinal(data);
-    }
-
-    public static byte[] decryptBASE64(String key) throws Exception {
-        return Base64.decode(key, Base64.DEFAULT);
-    }
-
-    private PublicKey getPublicKey(String pubKeyStr) throws Exception
-    {
-        byte[] publicBytes = Base64.decode(pubKeyStr, Base64.DEFAULT);
-        X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicBytes);
-        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-        PublicKey pubKey = keyFactory.generatePublic(keySpec);
-        return pubKey;
-    }
-
 
     private String getHashValue(String value)
     {
@@ -335,17 +229,6 @@ public class ShoppingCartActivity extends ListActivity implements AdapterView.On
         byte[] encodedhash = digest.digest(
         value.getBytes(StandardCharsets.UTF_8));
 
-        // now transform the byte array into hexadecimal so we can convert back to string
-
-        StringBuilder hexString = new StringBuilder(2 * encodedhash.length);
-        for (int i = 0; i < encodedhash.length; i++) {
-            String hex = Integer.toHexString(0xff & encodedhash[i]);
-            if(hex.length() == 1) {
-                hexString.append('0');
-            }
-            hexString.append(hex);
-        }
-
-        return hexString.toString();
+        return new String(encodedhash);
     }
 }
