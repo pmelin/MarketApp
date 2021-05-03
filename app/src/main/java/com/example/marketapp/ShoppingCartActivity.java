@@ -41,6 +41,7 @@ import java.security.cert.CertificateException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import javax.crypto.Cipher;
 import javax.crypto.NoSuchPaddingException;
@@ -129,18 +130,18 @@ public class ShoppingCartActivity extends ListActivity implements AdapterView.On
     {
         JSONObject jsonObj = new JSONObject();
         // user id
-        jsonObj.put("user_id", UserID);
+        jsonObj.put("user_uuid", UserID);
         // voucher if possible
         if (voucherSelected != null) {
             jsonObj.put("voucher_code", voucherSelected.getCode());
         }
         // total value of the cart
-        jsonObj.put("total", lblTotal.getText());
+        jsonObj.put("total", removeLastCharacter((String) lblTotal.getText()));
         // json array with the id's of the products
         JSONArray jsonA = new JSONArray();
         ShoppingCart.getProducts().forEach( product -> jsonA.put(product.getId()));
 
-        jsonObj.put("product_id" , jsonA);
+        jsonObj.put("product_uuid" , jsonA);
         return jsonObj.toString() + "hash:" + prepareHash(jsonObj.toString());
     }
 
@@ -162,6 +163,14 @@ public class ShoppingCartActivity extends ListActivity implements AdapterView.On
         Thread thr = new Thread(getVouchers);
         thr.start();
         thr.join();
+    }
+
+    public static String removeLastCharacter(String str) {
+        String result = Optional.ofNullable(str)
+                .filter(sStr -> sStr.length() != 0)
+                .map(sStr -> sStr.substring(0, sStr.length() - 1))
+                .orElse(str);
+        return result;
     }
 
     private String prepareHash(String jsonObjectString)

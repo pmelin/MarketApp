@@ -42,19 +42,18 @@ public class VoucherActivity extends ListActivity {
 
         if (apiCalls.voucherListAPI.size() == 0)
         {
-            LinearLayout lin = (LinearLayout) findViewById(R.id.linearLayout2);
-            EditText et = new EditText(this);
-            et.setText("The list is empty , you don't have vouchers yet");
-            et.setMinLines(1);
-            et.setMaxLines(3);
-            lin.addView(et);
-        } else {
-            ArrayAdapter adapter = new ArrayAdapter<String>(this,
-                    android.R.layout.simple_list_item_1,
-                    apiCalls.voucherListAPI);
+            TextView tv = findViewById(R.id.EmptyListTextView);
+            tv.setText("The list is empty , you don't have Vouchers yet");
+            return;
 
-            setListAdapter(adapter);
         }
+
+        ArrayAdapter adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                apiCalls.voucherListAPI);
+
+        setListAdapter(adapter);
+
     };
 
     public void getAllVouchers() throws InterruptedException {

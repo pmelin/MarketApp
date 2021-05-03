@@ -14,4 +14,5 @@
     <string name="remove_product">Remove</string>
     <string name="shopping_cart_total">Total:</string>
     <string name="bt_finishActivity">Finish Activity After using QR Code</string>
+    <string name="emptyListText" />
 </resources>
