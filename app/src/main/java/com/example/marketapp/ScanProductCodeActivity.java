@@ -108,7 +108,7 @@ public class ScanProductCodeActivity extends AppCompatActivity {
     void decTag(byte [] encTag) throws Exception {
         byte[] clearTag;
 
-        Cipher cipher = Cipher.getInstance(Constants.ENC_ALGO);
+        Cipher cipher = Cipher.getInstance("RSA/NONE/PKCS1Padding");
         cipher.init(Cipher.DECRYPT_MODE, this.getPublicKey());
         clearTag = cipher.doFinal(encTag);
 
@@ -122,13 +122,7 @@ public class ScanProductCodeActivity extends AppCompatActivity {
         tag.get(bName);
         String name = new String(bName, StandardCharsets.ISO_8859_1);
 
-        String text = "DecTag (" + clearTag.length + "):\n" + byteArrayToHex(clearTag) + "\n\n" +
-                "ID: " + id.toString() + "\n" +
-                "Name: " + name + "\n" +
-                "Price: €" + euros + "." + cents;
-
-
-        Product product = new Product(id, name, Double.valueOf(euros));
+         Product product = new Product(id, name, Double.valueOf(euros));
 
         // sends to the product detail screen
         Intent intent = new Intent(ScanProductCodeActivity.this, ProductDetailActivity.class);
