@@ -1,0 +1,105 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.marketapp"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+8-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.CAMERA" />
+11-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:5:5-65
+11-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:5:22-62
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:6:5-67
+12-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:6:22-64
+13
+14    <application
+14-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:8:5-46:19
+15        android:allowBackup="true"
+15-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:10:9-35
+16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+16-->[androidx.core:core:1.3.1] /home/myname/.gradle/caches/transforms-2/files-2.1/b234a824af7fd98a5c54fc0522824a91/core-1.3.1/AndroidManifest.xml:24:18-86
+17        android:debuggable="true"
+18        android:extractNativeLibs="false"
+19        android:icon="@mipmap/ic_launcher"
+19-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:11:9-43
+20        android:label="@string/app_name"
+20-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:12:9-41
+21        android:networkSecurityConfig="@xml/network_security_config"
+21-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:9:9-69
+22        android:roundIcon="@mipmap/ic_launcher_round"
+22-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:13:9-54
+23        android:supportsRtl="true"
+23-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:14:9-35
+24        android:testOnly="true"
+25        android:theme="@style/Theme.MarketApp" >
+25-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:15:9-47
+26        <activity android:name="com.example.marketapp.LoginActivity" />
+26-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:16:9-60
+26-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:16:19-48
+27        <activity android:name="com.example.marketapp.RegistrationActivity" >
+27-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:17:9-23:20
+27-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:17:19-55
+28            <intent-filter>
+28-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:18:13-22:29
+29                <action android:name="android.intent.action.MAIN" />
+29-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:19:17-69
+29-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:19:25-66
+30
+31                <category android:name="android.intent.category.LAUNCHER" />
+31-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:21:17-77
+31-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:21:27-74
+32            </intent-filter>
+33        </activity>
+34        <activity android:name="com.example.marketapp.HomeActivity" />
+34-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:24:9-50
+34-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:24:19-47
+35        <activity
+35-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:25:9-27:58
+36            android:name="com.example.marketapp.ScanProductCodeActivity"
+36-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:26:13-52
+37            android:parentActivityName="com.example.marketapp.HomeActivity" />
+37-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:27:13-55
+38        <activity
+38-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:28:9-30:69
+39            android:name="com.example.marketapp.ProductDetailActivity"
+39-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:29:13-50
+40            android:parentActivityName="com.example.marketapp.ScanProductCodeActivity" />
+40-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:30:13-66
+41        <activity
+41-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:31:9-33:58
+42            android:name="com.example.marketapp.ShoppingCartActivity"
+42-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:32:13-49
+43            android:parentActivityName="com.example.marketapp.HomeActivity" />
+43-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:33:13-55
+44        <activity
+44-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:34:9-36:69
+45            android:name="com.example.marketapp.VoucherActivity"
+45-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:35:13-44
+46            android:parentActivityName="com.example.marketapp.ScanProductCodeActivity" />
+46-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:36:13-66
+47        <activity
+47-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:37:9-39:70
+48            android:name="com.example.marketapp.PastTransactionsActivity"
+48-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:38:13-53
+49            android:parentActivityName="com.example.marketapp.PastTransactionsActivity" />
+49-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:39:13-67
+50        <activity
+50-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:40:9-42:70
+51            android:name="com.example.marketapp.CartItemsActivity"
+51-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:41:13-46
+52            android:parentActivityName="com.example.marketapp.PastTransactionsActivity" />
+52-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:42:13-67
+53        <activity
+53-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:43:9-45:66
+54            android:name="com.example.marketapp.QRCodeCartActivity"
+54-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:44:13-47
+55            android:parentActivityName="com.example.marketapp.ShoppingCartActivity" />
+55-->/home/myname/AndroidStudioProjects/MarketApp/app/src/main/AndroidManifest.xml:45:13-63
+56    </application>
+57
+58</manifest>

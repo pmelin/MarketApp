@@ -1,0 +1,69 @@
+com/example/marketapp/dto/RegisterFormDTO.java
+ com.example.marketapp.dto.RegisterFormDTO
+com/example/marketapp/RegistrationActivity.java
+ com.example.marketapp.RegistrationActivity
+ com.example.marketapp.RegistrationActivity$1
+ com.example.marketapp.RegistrationActivity$1$1
+com/example/marketapp/HomeActivity.java
+ com.example.marketapp.HomeActivity
+ com.example.marketapp.HomeActivity$1
+ com.example.marketapp.HomeActivity$2
+ com.example.marketapp.HomeActivity$3
+com/example/marketapp/dto/RegisterResponseDTO.java
+ com.example.marketapp.dto.RegisterResponseDTO
+com/example/marketapp/CartItemsActivity.java
+ com.example.marketapp.CartItemsActivity
+com/example/marketapp/LoginActivity.java
+ com.example.marketapp.LoginActivity
+ com.example.marketapp.LoginActivity$1
+com/example/marketapp/model/APICalls.java
+ com.example.marketapp.model.APICalls
+ com.example.marketapp.model.APICalls$GetAllCarts
+ com.example.marketapp.model.APICalls$GetProducts
+ com.example.marketapp.model.APICalls$GetVouchers
+com/example/marketapp/ProductListAdapter.java
+ com.example.marketapp.ProductListAdapter
+ com.example.marketapp.ProductListAdapter$1
+ com.example.marketapp.ProductListAdapter$ViewHolder
+com/example/marketapp/ScanProductCodeActivity.java
+ com.example.marketapp.ScanProductCodeActivity
+ com.example.marketapp.ScanProductCodeActivity$1
+ com.example.marketapp.ScanProductCodeActivity$1$1
+ com.example.marketapp.ScanProductCodeActivity$2
+com/example/marketapp/ProductDetailActivity.java
+ com.example.marketapp.ProductDetailActivity
+ com.example.marketapp.ProductDetailActivity$1
+com/example/marketapp/model/ShoppingCart.java
+ com.example.marketapp.model.ShoppingCart
+com/example/marketapp/model/Product.java
+ com.example.marketapp.model.Product
+com/example/marketapp/BuildConfig.java
+ com.example.marketapp.BuildConfig
+com/example/marketapp/repository/SettingsRepository.java
+ com.example.marketapp.repository.SettingsRepository
+com/example/marketapp/model/Transaction.java
+ com.example.marketapp.model.Transaction
+com/example/marketapp/ShoppingCartActivity.java
+ com.example.marketapp.ShoppingCartActivity
+ com.example.marketapp.ShoppingCartActivity$1
+ com.example.marketapp.ShoppingCartActivity$2
+ com.example.marketapp.ShoppingCartActivity$3
+com/example/marketapp/Constants.java
+ com.example.marketapp.Constants
+com/example/marketapp/dto/RegisterRequestDTO.java
+ com.example.marketapp.dto.RegisterRequestDTO
+com/example/marketapp/service/BackendService.java
+ com.example.marketapp.service.BackendService
+com/example/marketapp/service/KeyService.java
+ com.example.marketapp.service.KeyService
+com/example/marketapp/QRCodeCartActivity.java
+ com.example.marketapp.QRCodeCartActivity
+ com.example.marketapp.QRCodeCartActivity$1
+ com.example.marketapp.QRCodeCartActivity$convertToQR
+com/example/marketapp/PastTransactionsActivity.java
+ com.example.marketapp.PastTransactionsActivity
+ com.example.marketapp.PastTransactionsActivity$1
+com/example/marketapp/model/Voucher.java
+ com.example.marketapp.model.Voucher
+com/example/marketapp/VoucherActivity.java
+ com.example.marketapp.VoucherActivity

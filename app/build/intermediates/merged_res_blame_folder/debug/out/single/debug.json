@@ -1,0 +1,114 @@
+[
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/xml_network_security_config.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/xml/network_security_config.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/menu_my_menu.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/menu/my_menu.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/layout_camera_permission_denied.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/layout/camera_permission_denied.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/layout_activity_registration.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/layout/activity_registration.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/drawable_ic_launcher_background.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/layout_product_details.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/layout/product_details.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/layout_qr_code_cart.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/layout/qr_code_cart.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/layout_shopping_cart.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/layout/shopping_cart.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/layout_past_transactions.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/layout/past_transactions.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/layout_voucher.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/layout/voucher.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/layout_activity_login.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/layout/activity_login.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/layout_cart_items.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/layout/cart_items.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/layout_scan_product.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/layout/scan_product.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/layout_home_screen.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/layout/home_screen.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/layout_shopping_cart_list_item.xml.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/layout/shopping_cart_list_item.xml"
+    },
+    {
+        "merged": "/home/myname/AndroidStudioProjects/MarketApp/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/home/myname/AndroidStudioProjects/MarketApp/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    }
+]
