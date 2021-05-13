@@ -12,11 +12,7 @@ import java.util.UUID;
  * Class that holds the products added to the shopping cart.
  */
 public class ShoppingCart {
-    private final static Set<Product> products = new HashSet<>(
-            Arrays.asList(
-                    new Product(UUID.fromString("3f13cfc8-d8bb-41ca-83a8-c1862a9cc799"), "Vinho", 7.99),
-                    new Product(UUID.fromString("1912c740-d190-468a-a0c1-c6b27b5fc278"), "Cerveja", 0.75),
-                    new Product(UUID.fromString("afa7846b-24ac-4942-876b-05abc58c5c52"), "Laptop", 599.99)));
+    private final static Set<Product> products = new HashSet<>();
 
     /*private final static Set<Voucher> vouchers = new HashSet<>(
             Arrays.asList(
